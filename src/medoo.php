@@ -136,7 +136,7 @@ class medoo
 				$commands[] = "SET NAMES '" . $this->charset . "'";
 			}
 
-			$this->pdo = new PDO(
+			$this->pdo = new \PDO(
 				$dsn,
 				$this->username,
 				$this->password,
@@ -148,8 +148,8 @@ class medoo
 				$this->pdo->exec($value);
 			}
 		}
-		catch (PDOException $e) {
-			throw new Exception($e->getMessage());
+		catch (\PDOException $e) {
+			throw new \Exception($e->getMessage());
 		}
 	}
 
@@ -662,7 +662,7 @@ class medoo
 		$query = $this->query($this->select_context($table, $join, $columns, $where));
 
 		return $query ? $query->fetchAll(
-			(is_string($columns) && $columns != '*') ? PDO::FETCH_COLUMN : PDO::FETCH_ASSOC
+			(is_string($columns) && $columns != '*') ? \PDO::FETCH_COLUMN : \PDO::FETCH_ASSOC
 		) : false;
 	}
 
@@ -819,7 +819,7 @@ class medoo
 
 		if ($query)
 		{
-			$data = $query->fetchAll(PDO::FETCH_ASSOC);
+			$data = $query->fetchAll(\PDO::FETCH_ASSOC);
 
 			if (isset($data[ 0 ]))
 			{

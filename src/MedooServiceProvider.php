@@ -32,7 +32,8 @@ class MedooServiceProvider extends ServiceProvider
         $this->app->singleton('medoo', function ($app) {
             $default = config("database.default");
 
-            $dbConnection = config("database.connection." . $default . ".");
+            $dbConnection = "database.connection." . $default . ".";
+            
             $driver = config($dbConnection . "driver");
 
             if ($driver !== 'sqlite') {
@@ -50,7 +51,7 @@ class MedooServiceProvider extends ServiceProvider
                 if (!empty($port)) {
                     $options['port'] = $port;
                 }
-            } else {
+            } elseif ($driver == 'sqlite') {
                 $options = [
                     'database_type' => $driver,
                     'database_file' => config($dbConnection . "database"),
