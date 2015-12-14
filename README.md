@@ -1,3 +1,34 @@
+## laravel-medoo
+This package provides a Facade and ServiceProvider for the database framework *medoo*. It might be useful in Lumen
+or when you already have existing code that's based on medoo and you would like to port it to Laravel/Lumen instead of rewriting the whole code to use the Query Builder or Eloquent.
+
+It uses the `default` connection.
+
+### Installation
+1. Install the package
+
+`composer require repat/laravel-medoo`
+
+2. Add the Service Provider to the providers array in `app/config/app.php`
+
+```php
+repat\LaravelMedoo\MedooServiceProvider::class,
+```
+
+3. Add alias in `app/config/app.php`
+
+```php
+'Medoo'            => repat\LaravelMedoo\MedooFacade::class,
+```
+
+### Usage
+
+```php
+Medoo::select("table", "*");
+```
+
+See [official medoo documentation](http://medoo.in/doc) for more.
+
 ![](https://raw.githubusercontent.com/catfan/Medoo/develop/src/medoo-logo.png)
 
 ## [Medoo](http://medoo.in)

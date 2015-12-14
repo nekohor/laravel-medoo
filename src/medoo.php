@@ -1,4 +1,6 @@
 <?php
+namespace catfan;
+
 /*!
  * Medoo database framework
  * http://medoo.in
