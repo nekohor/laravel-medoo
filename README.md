@@ -29,6 +29,8 @@ Medoo::select("table", "*");
 
 See [official medoo documentation](http://medoo.in/doc) for more.
 
+---
+
 ![](https://raw.githubusercontent.com/catfan/Medoo/develop/src/medoo-logo.png)
 
 ## [Medoo](http://medoo.in)

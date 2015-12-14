@@ -8,8 +8,8 @@
         {
             "name": "Angel Lai",
             "email": "angel@catfan.me"
-            },
-            {
+        },
+        {
             "name": "repat",
             "email": "repat@repat.de"
         }
@@ -28,9 +28,9 @@
         "ext-pdo_sqlite": "For SQLite databases"
     },
     "autoload": {
-        "psr-4": [
-            "catfan\\" : "src/",
-            "repat\\LaravelMedoo" : "src/",
-        ]
+        "psr-4": {
+            "catfan\\": "src/",
+            "repat\\LaravelMedoo": "src/"
+        }
     }
 }
