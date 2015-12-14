@@ -32,7 +32,7 @@ class MedooServiceProvider extends ServiceProvider
         $this->app->singleton('medoo', function ($app) {
             $default = config("database.default");
 
-            $dbConnection = "database.connection." . $default . ".";
+            $dbConnection = "database.connections." . $default . ".";
             
             $driver = config($dbConnection . "driver");
 
