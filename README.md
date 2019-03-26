@@ -18,7 +18,7 @@ repat\LaravelMedoo\MedooServiceProvider::class,
 3. Add alias in `app/config/app.php`
 
 ```php
-'Medoo'            => repat\LaravelMedoo\MedooFacade::class,
+'Medoo' => repat\LaravelMedoo\MedooFacade::class,
 ```
 
 ### Usage
@@ -31,25 +31,37 @@ See [official medoo documentation](http://medoo.in/doc) for more.
 
 ---
 
-![](https://raw.githubusercontent.com/catfan/Medoo/develop/src/medoo-logo.png)
+<p align="center">
+    <a href="https://medoo.in" target="_blank"><img src="https://cloud.githubusercontent.com/assets/1467904/19835326/ca62bc36-9ebd-11e6-8b37-7240d76319cd.png"></a>
+</p>
 
-## [Medoo](http://medoo.in)
+<p align="center">
+    <a href="https://packagist.org/packages/catfan/medoo"><img alt="Total Downloads" src="https://poser.pugx.org/catfan/medoo/downloads"></a>
+    <a href="https://packagist.org/packages/catfan/medoo"><img alt="Latest Stable Version" src="https://poser.pugx.org/catfan/medoo/v/stable"></a>
+    <a href="https://packagist.org/packages/catfan/medoo"><img alt="License" src="https://poser.pugx.org/catfan/medoo/license"></a>
+    <a href="https://opencollective.com/medoo"><img alt="Backers on Open Collective" src="https://opencollective.com/Medoo/backers/badge.svg"></a>
+    <a href="https://opencollective.com/medoo"><img alt="Sponsors on Open Collective" src="https://opencollective.com/Medoo/sponsors/badge.svg"> </a>
+</p>
 
 > The Lightest PHP database framework to accelerate development
 
-## Main Features
+## Features
 
-* **Lightweight** - 20KB around with only one file.
+* **Lightweight** - Less than 100 KB, portable with only one file
 
-* **Easy** - Extremely easy to learn and use, friendly construction.
+* **Easy** - Extremely easy to learn and use, friendly construction
 
-* **Powerful** - Support various common and complex SQL queries.
+* **Powerful** - Supports various common and complex SQL queries, data mapping, and prevent SQL injection
 
-* **Compatible** - Support various SQL database, including MySQL, MSSQL, SQLite, MariaDB, Sybase, Oracle, PostgreSQL and more.
+* **Compatible** - Supports all SQL databases, including MySQL, MSSQL, SQLite, MariaDB, PostgreSQL, Sybase, Oracle and more
 
-* **Security** - Prevent SQL injection.
+* **Friendly** - Works well with every PHP frameworks, like Laravel, Codeigniter, Yii, Slim, and framework which supports singleton extension or composer
 
-* **Free** - Under MIT license, you can use it anywhere if you want.
+* **Free** - Under MIT license, you can use it anywhere whatever you want
+
+## Requirement
+
+PHP 5.4+ and PDO extension installed
 
 ## Get Started
 
@@ -66,29 +78,42 @@ $ composer update
 ```
 
 ```php
-// If you installed via composer, just use this code to requrie autoloader on the top of your projects.
+// If you installed via composer, just use this code to require autoloader on the top of your projects.
 require 'vendor/autoload.php';
 
-// Or if you just download the medoo.php into directory, require it with the correct path.
-require_once 'medoo.php';
+// Using Medoo namespace
+use Medoo\Medoo;
 
 // Initialize
-$database = new medoo([
+$database = new Medoo([
     'database_type' => 'mysql',
     'database_name' => 'name',
     'server' => 'localhost',
     'username' => 'your_username',
-    'password' => 'your_password',
-    'charset' => 'utf8'
+    'password' => 'your_password'
 ]);
 
 // Enjoy
 $database->insert('account', [
     'user_name' => 'foo',
-    'email' => 'foo@bar.com',
-    'age' => 25,
-    'lang' => ['en', 'fr', 'jp', 'cn']
+    'email' => 'foo@bar.com'
 ]);
+
+$data = $database->select('account', [
+    'user_name',
+    'email'
+], [
+    'user_id' => 50
+]);
+
+echo json_encode($data);
+
+// [
+//     {
+//         "user_name" : "foo",
+//         "email" : "foo@bar.com",
+//     }
+// ]
 ```
 
 ## Contribution Guides
@@ -101,10 +126,10 @@ Keep it simple and keep it clear.
 
 ## License
 
-Medoo is under the MIT License.
+Medoo is under the MIT license.
 
 ## Links
 
-* Official website: [http://medoo.in](http://medoo.in)
+* Official website: [https://medoo.in](https://medoo.in)
 
-* Documentation: [http://medoo.in/doc](http://medoo.in/doc)
+* Documentation: [https://medoo.in/doc](https://medoo.in/doc)

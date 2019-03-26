@@ -20,7 +20,7 @@ class MedooServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerHelper();
-        $this->app->alias('medoo', 'catfan\medoo');
+        $this->app->alias('medoo', 'Medoo\Medoo');
     }
     /**
      * Register the Goutte instance.
@@ -33,7 +33,7 @@ class MedooServiceProvider extends ServiceProvider
             $default = config("database.default");
 
             $dbConnection = "database.connections." . $default . ".";
-            
+
             $driver = config($dbConnection . "driver");
 
             if ($driver !== 'sqlite') {
@@ -64,7 +64,7 @@ class MedooServiceProvider extends ServiceProvider
                 $options['prefix'] = $prefix;
             }
 
-            return new \catfan\medoo($options);
+            return new \Medoo\Medoo($options);
         });
     }
     /**
